@@ -1,0 +1,235 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    //user input variables
+    int no_of_cust;
+    int cart_items;
+    int choices;
+    int no_of_box=0;
+    int no_of_bag=0;
+    int payment_method;
+    int cash_value;
+    
+    //given variables
+    double Time_to_Cashier=0.5;
+    double Time_ScanItems=0.5;
+    double Time_Pack=0.5;
+    int pack_box=10;
+    int pack_bag=5;
+    int pay_byCash=20;
+    int pay_byCard=15;
+    int exact=15;
+    int notExact=20;
+    double receipt_print=0.3;
+    int text_data =2;
+    int idleTime=3;
+     
+
+    //formula variables
+    double Total_Decarting_Time=0.00;
+    double Total_Scanning_Time=0.00;
+    double Total_Packing_Time=0.00;
+    double Total_Paying_Time=0.00;
+    double Total_Printing_Time=0.00;
+    double Total_idleTime=0.00;
+    double Total_Queue_time=0.00;
+    double Ftotal_Queue_time=0.00;
+
+
+    cout<<"======================================="<<endl;
+    cout<<"Number of Customers: ";
+    cin>>no_of_cust;
+    cout<<"======================================="<<endl<<endl;
+    
+        for(int i=1;i<=no_of_cust;i++)
+    {
+        if(i!=no_of_cust+1)
+        {
+            
+            cout<<"\t-----Customer No."<<i<<"-----"<<endl;
+            
+            cout<<"•••••••••••••••••••••••••••••••••••••••"<<endl;     
+            cout<<"No of Cart Items: ";
+            cin>>cart_items;
+
+            int count=0;
+            while(count!=1)
+            {
+                cout<<"Preferred Packaging:[1]Box||[2]Bag : ";
+                cin>>choices;
+                if(choices==1)
+                {
+                    cout<<"Number of boxes: ";
+                    cin>>no_of_box;
+                    count=1;
+                }
+                else if(choices==2)
+                {
+                    cout<<"Number of bags: ";
+                    cin>>no_of_bag;
+                    count=1;
+                }
+                else
+                {
+                    cout<<"Invalid Choice"<<endl;
+                    count=0;
+                }
+            }
+                count=0;
+                while(count!=1)
+                {
+                    cout<<"Preferred Payment Method:[1]Cash||[2]Digital: ";
+                    cin>>payment_method;
+
+                    if(payment_method==1)
+                    {
+                        count=1;
+                    }
+                    else if(payment_method==2)
+                    {
+                        count=1;
+                    }
+                    else
+                    {
+                        cout<<"Invalid Payment Method"<<endl;
+                        count=0;
+                    }
+                }
+                if(payment_method==1)
+                {
+                    count=0;
+                    while(count!=1)
+                    {
+                        cout<<"[1]Exact||[2]Not Exact: ";
+                        cin>>cash_value;
+                        
+                        if(cash_value==1)
+                        {
+                            count=1;
+                        }
+                        else if(cash_value==2)
+                        {
+                            count=1;
+                        }
+                        else
+                        {
+                            cout<<"Invalid Cash Value"<<endl;
+                            count=0;                    
+                        }
+                    }
+                }
+                
+                
+                
+ // print out the reciept
+         cout<<endl<<endl;     cout<<"+++++++++++++++++++++++++++++++++++++++"<<endl;
+                cout<<"Customer #"<<i<<":"<<endl;
+                cout<<"Number of Cart Items: "<<cart_items<<endl;
+                if(choices==1)
+                {
+                    cout<<"Preferred Packaging: Box"<<endl;
+                    cout<<"Number of boxes:"<<no_of_box<<endl;
+                    if(cash_value==1)
+                    {
+                    cout<<"Preferred Method: Cash(Exact)"<<endl;
+                    }
+                    if(cash_value==2)
+                    {
+                    cout<<"Preferred Method: Cash(Not Exact)"<<endl;
+                    }    
+                       if (payment_method==2)
+                    {
+                        cout<<"Preferred Payment Method: Digital"<<endl;
+                    }       
+                }
+                else if(choices==2)
+                {
+                    cout<<"Preferred Packaging: Bag"<<endl;
+                    cout<<"Number of boxes:"<<no_of_bag<<endl;                   
+                    if(payment_method==1)
+                    {
+                        if(cash_value==1)
+                        {
+                            cout<<"Preferred Method: Cash(Exact)"<<endl;
+                        }
+                        if(cash_value==2)
+                        {
+                            cout<<"Preferred Method: Cash(Not Exact)"<<endl;
+                        }
+                    }                   
+                      if (payment_method==2)
+                    {
+                        cout<<"Preferred Payment Method: Digital"<<endl;
+                    }               
+                }
+                
+                
+                
+  //formulas
+                Total_Decarting_Time = cart_items * Time_to_Cashier;
+                Total_Scanning_Time = cart_items * Time_ScanItems;
+
+                if(choices==2)
+                {
+                    Total_Packing_Time = (cart_items * Time_Pack) + (no_of_bag * pack_bag);
+                }
+
+                if(choices==1)
+                {
+                    Total_Packing_Time = (cart_items * Time_Pack) + (no_of_box * pack_box); 
+                }
+
+                if(payment_method==1)
+                {
+                    if(cash_value==1)
+                    {
+                        Total_Paying_Time = exact;
+                    }
+                    if(cash_value==2)
+                    {
+                        Total_Paying_Time = notExact;
+                    }
+                }
+
+                if(payment_method==2)
+                {
+                    Total_Paying_Time = pay_byCard;
+                }
+
+                Total_Printing_Time = (cart_items * receipt_print) + text_data;
+
+                if(i<2)
+                {
+                  Total_idleTime = idleTime - 3;  
+                }
+                else
+                {
+                    Total_idleTime = idleTime;
+                }
+
+                Total_Queue_time = Total_Decarting_Time + Total_Scanning_Time + Total_Packing_Time + Total_Paying_Time + Total_Printing_Time + Total_idleTime;
+
+  
+
+
+                cout<<"_______________________________________"<<endl;
+                cout<<"Total De-Carting Time:       "<<Total_Decarting_Time<<endl;
+                cout<<"Total Scanning Time:         "<<Total_Scanning_Time<<endl;
+                cout<<"Total Packing Time:          "<<Total_Packing_Time<<endl;
+                cout<<"Total Paying Time:           "<<Total_Paying_Time<<endl;
+                cout<<"Total Receipt Printing Time: "<<Total_Printing_Time<<endl;
+                cout<<"Idle Time:                   "<<Total_idleTime<<endl;
+                cout<<"Total Customer-Queue Time:   "<<Total_Queue_time<<endl;
+                cout<<"+++++++++++++++++++++++++++++++++++++++"<<endl;
+                cout<<endl;
+        }
+        Ftotal_Queue_time+=Total_Queue_time;
+    }
+    
+    cout<<"======================================="<<endl;
+    cout<<"Total Lane Queue Time: "<<Ftotal_Queue_time<<endl;
+    cout<<"======================================="<<endl;
+
+}
