@@ -1,0 +1,24 @@
+Step 1: Start!
+Step 2: declare an fstream variable.
+Step 3: open up the file that holds the user inputs. 
+Step 4: declare all variables.
+Step 5: take the size of the queue in the file.
+Step 6: make a loop with the size of the customer queue.
+Step 7: inside the loop take the users input(cart items, packaging method,
+number of packages used, payment method) from the file.
+Step 6: make a new for loop with the size of the queue in the file.
+Step 7: print out the receipt, display the customer number,cart items,packaging method, number of packages and payment method.
+Step 8: Calculate the Total decarting Time and the Total scan time. 
+Step 9: check if the packaging method is either a box or bag.
+If the box is chosen, solve for the pack time for the box.
+Step 10: check if the payment method is either cash or digital.
+If the payment method is cash, check if the cash value is either exact or not exact. 
+Step 11: Solve the time for receipt printing. 
+Step 12: check for the idle time. if the customer is the first customer there will be no idle time, and if it's  second or up there will be an idle time of 3.
+Step 18: Solve the queue time for each customer. (The total decarting time, total scanning time, total packing time, total paying time, total printing time, and total idle time equals total queue time.)
+
+Step 13: print out the receipt
+Step 14: solve for the total queue time of all customers.
+Step 15: print out the value of total queue time.
+Step 16: close the file.
+Step 17: End!
