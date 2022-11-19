@@ -15,10 +15,10 @@ Step 10: check if the payment method is either cash or digital.
 If the payment method is cash, check if the cash value is either exact or not exact. 
 Step 11: Solve the time for receipt printing. 
 Step 12: check for the idle time. if the customer is the first customer there will be no idle time, and if it's  second or up there will be an idle time of 3.
-Step 18: Solve the queue time for each customer. (The total decarting time, total scanning time, total packing time, total paying time, total printing time, and total idle time equals total queue time.)
+Step 13: Solve the queue time for each customer. (The total decarting time, total scanning time, total packing time, total paying time, total printing time, and total idle time equals total queue time.)
 
-Step 13: print out the receipt
-Step 14: solve for the total queue time of all customers.
-Step 15: print out the value of total queue time.
-Step 16: close the file.
-Step 17: End!
+Step 14: print out the receipt
+Step 15: solve for the total queue time of all customers.
+Step 16: print out the value of total queue time.
+Step 17: close the file.
+Step 18: End!
